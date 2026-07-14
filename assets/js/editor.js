@@ -198,7 +198,7 @@ class MemoriaEditor {
   }
 
   #windowKeydown(e) {
-    if (e.key == "Escape") {
+    if (e.key === "Escape") {
       this.#saveWorkspaceTextarea();
       window.location.assign(location.pathname);
       e.preventDefault();
