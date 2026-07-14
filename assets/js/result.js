@@ -10,7 +10,7 @@ class MemoriaResult {
     this.#bindEvent();
 
     this.result = this.#loadResult();
-    console.log(this.result);
+    this.hasMistake = this.result.mistake.flat().includes(true);
 
     if (this.result === null) {
       sessionStorage.removeItem(Key.RESULT_SESSION_KEY);
@@ -69,7 +69,7 @@ class MemoriaResult {
       this.ui.resultQuestions.insertAdjacentHTML("beforeend", `<div class="blanks">${blanksHtml.join("")}</div>`);
     }
 
-    if (this.result.mistake.flat().includes(true)) this.ui.mistakeOnlyButton.disabled = false;
+    if (this.hasMistake) this.ui.mistakeOnlyButton.disabled = false;
     else this.ui.mistakeOnlyButton.disabled = true;
   }
 
@@ -85,6 +85,16 @@ class MemoriaResult {
   #windowKeydown(e) {
     if (e.key === "Escape") {
       this.#returnHome();
+      e.preventDefault();
+    }
+
+    if (e.key.toLowerCase() === "m" && this.hasMistake) {
+      this.#mistakeOnly();
+      e.preventDefault();
+    }
+
+    if (e.key.toLowerCase() === "r") {
+      this.#restart();
       e.preventDefault();
     }
   }
