@@ -60,6 +60,11 @@ class MemoriaHome {
     if (e.key === "Enter" && this.current) {
       this.current.click();
     }
+
+    if (e.key === "e") {
+      window.location.assign("?edit");
+      e.preventDefault();
+    }
   }
 
   #movePointer(dy) {
