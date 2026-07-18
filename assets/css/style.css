@@ -40,7 +40,12 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: "MyFont", "Yu Gothic Medium", sans-serif;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 body::selection {

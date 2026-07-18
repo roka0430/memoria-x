@@ -50,6 +50,11 @@ class MemoriaEditor {
       target.classList.add("current");
       this.#setWorkspaceTextarea(id);
       this.#scrollSubjectList(target);
+
+      if (target.dataset.name === "NewSubject") {
+        this.#enterSubjectNameChangeMode(target);
+      }
+
       return;
     }
 
